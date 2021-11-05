@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="bootstrap.bundle.min.js"></script>
+    <script src="d3.v3.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var color = d3.scale.linear()
+            .range(["white", "white"])
+            .interpolate(d3.interpolateHcl)
+            .domain([0, 200]);
+        var jsonCircles = [
+            { "x_axis": 30, "y_axis": 30, "radius": 20, "color": "green" },
+            { "x_axis": 70, "y_axis": 70, "radius": 20, "color": "purple" },
+            { "x_axis": 110, "y_axis": 300, "radius": 20, "color": "red" },
+            { "x_axis": 200, "y_axis": 70, "radius": 20, "color": color(90) },
+            { "x_axis": 200, "y_axis": 100, "radius": 20, "color": color(10) }
+        ];
+        var svg = d3.select("body").append("svg")
+            .attr("width", "100%")
+            .attr("height", "100vh")
+            .style('background-color', "black");
+
+        /* var circles = svg.selectAll("circle")
+            .data(jsonCircles)
+            .enter() // pour chaque donnée
+            .append("circle")
+            .attr("cx", function (d) { return d.x_axis; })
+            .attr("cy", function (d) { return d.y_axis; })
+            .attr("r", function (d) { return d.radius; })
+            .style("fill", function (d) { return d.color; }); */
+
+        var l1 = svg.append('line')
+            .attr('x1', 200)
+            .attr('y1', 200)
+            .attr('x2', 300)
+            .attr('y2', 100)
+            .attr("stroke", color(200))
+            .attr("stroke-width", 5);
+
+        var l2 = svg.append('line')
+            .attr('x1', 300)
+            .attr('y1', 100)
+            .attr('x2', 400)
+            .attr('y2', 200)
+            .attr("stroke", color(200))
+            .attr("stroke-width", 5);
+
+        var l3 = svg.append('line')
+            .attr('x1', 200)
+            .attr('y1', 200)
+            .attr('x2', 400)
+            .attr('y2', 200)
+            .attr("stroke", color(200))
+            .attr("stroke-width", 5);
+
+        var c1 = svg.append('circle')
+            .attr("r", 20)
+            .attr("cx", 200)
+            .attr("cy", 200)
+            .attr("fill", "black")
+            .attr("stroke", "white")
+            .attr("stroke-width", 5)
+            .on("mouseover", actionMO)
+            .on("mouseout", actionMU)
+            .attr("id", "c1");
+
+        var c2 = svg.append('circle')
+            .attr("r", 20)
+            .attr("cx", 300)
+            .attr("cy", 100)
+            .attr("fill", "black")
+            .attr("stroke", "white")
+            .attr("stroke-width", 5)
+            .on("mouseover", actionMO)
+            .on("mouseout", actionMU)
+            .attr("id", "c2");
+
+        var c3 = svg.append('circle')
+            .attr("r", 20)
+            .attr("cx", 400)
+            .attr("cy", 200)
+            .attr("fill", "black")
+            .attr("stroke", "white")
+            .attr("stroke-width", 5)
+            .on("mouseover", actionMO)
+            .on("mouseout", actionMU)
+            .attr("id", "c3");
+
+        var text1 = svg.append("text")
+            .style("fill", "red")
+            .style("font-size", "20px")
+            .attr("text-anchor", "end")
+            .style("opacity", "0.5")
+            .attr("transform", "translate(175,200) rotate(0)")
+            .text("Node1")
+            .attr("id", "text1");
+        var text2 = svg.append("text")
+            .style("fill", "red")
+            .style("font-size", "20px")
+            .attr("text-anchor", "start")
+            .style("opacity", "0.5")
+            .attr("transform", "translate(325,100) rotate(0)")
+            .text("Node2")
+            .attr("id", "text2");
+        var text3 = svg.append("text")
+            .style("fill", "red")
+            .style("font-size", "20px")
+            .attr("text-anchor", "start")
+            .style("opacity", "0.5")
+            .attr("transform", "translate(425,200) rotate(0)")
+            .text("Node3")
+            .attr("id", "text3");
+
+        function actionMO() {
+            d3.select(this).transition()
+                .attr("fill", "red")
+                .attr("r", 25);
+            switch(this["id"]){
+                case "c1" : 
+                    text1.transition()
+                        .style("opacity", "1")
+                        .style("font-size", "25px");
+                    break;
+                case "c2" : 
+                    text2.transition()
+                            .style("opacity", "1")
+                            .style("font-size", "25px");
+                break;
+                case "c3" : 
+                    text3.transition()
+                            .style("opacity", "1")
+                            .style("font-size", "25px");
+                    break;
+            }
+        }
+        function actionMU() {
+            d3.select(this).transition()
+                .attr("fill", "black")
+                .attr("r", 20);
+            switch(this["id"]){
+                case "c1" : 
+                    text1.transition()
+                        .style("opacity", "0.5")
+                        .style("font-size", "20px");
+                    break;
+                case "c2" : 
+                    text2.transition()
+                            .style("opacity", "0.5")
+                            .style("font-size", "20px");
+                break;
+                case "c3" : 
+                    text3.transition()
+                            .style("opacity", "0.5")
+                            .style("font-size", "20px");
+                    break;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
