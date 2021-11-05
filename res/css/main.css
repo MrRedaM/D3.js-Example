@@ -28,6 +28,13 @@ main{
 #bar_graph{
     grid-column: 1 / 3;
     grid-row: 1 / 3;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding-right: 0;
+}
+
+#bar_chart{
+    padding-right: 1em;
 }
 
 #pie_graph_sexe{
@@ -57,13 +64,13 @@ main{
     margin: auto;
 }
 
-.fab{
+header .fab{
     transition: 0.7s;
     opacity: 0.6;
     cursor: pointer;
 }
 
-.fab:hover{
+header .fab:hover{
     transition: 0.7s;
     opacity: 1;
     scale: 1.1;
@@ -100,6 +107,49 @@ main{
 
 .name{
     font-family: 'Montserrat-ExtraBold';
-    color: #ff6600;
+    color: #f39026;
 }
 
+.icon_text{
+    display: flex;
+    align-items: baseline;
+    gap: 1em;
+}
+
+.icon_text .fas{
+    color: white;
+}
+
+.filters{
+    padding: 0 1em 0 1em;
+    background-color: #f39026;
+    border-radius: 1em;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.filters form{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}
+
+.filters p, .filters h3, .filters label{
+    color: white;
+}
+
+#apply{
+    background-color: white;
+    padding: 0.5em;
+    font-family: 'Montserrat-ExtraBold';
+    border-radius: 1em;
+    color: #f39026;
+    cursor: pointer;
+    border-style: none;
+}
+
+#apply:active{
+    transition: 0.1s;
+    scale: 0.95;
+}

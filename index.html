@@ -23,7 +23,27 @@
     <main>
         <div class="graphs_container">
             <div class="card" id="bar_graph">
-                <h2>Graphe Principale</h2>
+                <div id="bar_chart">
+                    <h2>Graphe Principale</h2>
+                </div>
+                <div class="filters">
+                    <div class="icon_text">
+                        <i class="fas fa-filter"></i>
+                        <h3>Filtres</h3>
+                    </div>
+                    <form>
+                        <p>Filtrer les données par</p>
+                        <div>
+                            <input type="radio" id="none" name="filter" value="none" checked="true">
+                            <label for="none">Aucun</label><br>
+                            <input type="radio" id="sexe" name="filter" value="sexe">
+                            <label for="sexe">Sexe</label><br>
+                            <input type="radio" id="age" name="filter" value="age">
+                            <label for="age">Age</label>
+                        </div>
+                        <input type="button" value="Appliquer" id="apply">
+                    </form>
+                </div>
             </div>
             <div class="card" id="pie_graph_sexe">
                 <h2>Sexe</h2>
