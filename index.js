@@ -1,8 +1,12 @@
+$("#none").prop("checked", true);
+$("#sexe").prop("checked", false);
+$("#age").prop("checked", false);
+
 //==============================================================================
 // BAR CHART
 //==============================================================================
 const width = 1000;
-const height = 500;
+const height = 450;
 
 const questions = [
     "Fumer",
@@ -71,7 +75,7 @@ $("#apply").click(function(){
                 z: d => d.z,
                 yLabel: "↑ Pourcentage (%)",
                 zDomain: ["hommes", "femmes"],
-                colors: ["#6ca0dc", "#f8b9d4"],
+                colors: ["#6ca0dc", "#e0517c"],
                 width: width,
                 height: height,
               }); 
@@ -120,7 +124,7 @@ d3.select("#pie_graph_sexe").append(function() {
         value: d => d.value,
         width: 200,
         height: 200,
-        colors: ["#6ca0dc", "#f8b9d4"],
+        colors: ["#6ca0dc", "#e0517c"],
         innerRadius: 50
       });
 })

@@ -85,7 +85,8 @@ function GroupedBarChart(data, {
         .attr("y", i => yScale(Y[i]))
         .attr("width", xzScale.bandwidth())
         .attr("height", i => yScale(0) - yScale(Y[i]))
-        .attr("fill", i => zScale(Z[i]));
+        .attr("fill", i => zScale(Z[i]))
+        .attr("class", "bar");
   
     if (title) bar.append("title")
         .text(title);
@@ -163,6 +164,7 @@ function DonutChart(data, {
     .join("path")
       .attr("fill", d => color(N[d.data]))
       .attr("d", arc)
+      .attr("class", "bar")
     .append("title")
       .text(d => title(d.data));
 
