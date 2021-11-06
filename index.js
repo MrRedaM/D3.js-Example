@@ -136,9 +136,9 @@ d3.select("#pie_graph_sexe").append(function() {
 //==============================================================================
 
 const pieDataAge = [
-    {name: "<20", value: 40},
-    {name: "18-30", value: 43},
-    {name: ">30", value: 23}
+    {name: "18-20 ans", value: 40},
+    {name: "21-30 ans", value: 43},
+    {name: ">30 ans", value: 23}
 ];
 
 d3.select("#pie_graph_age").append(function() { 
