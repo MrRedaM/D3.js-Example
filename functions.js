@@ -174,6 +174,7 @@ function DonutChart(data, {
     .data(arcs)
     .join("text")
       .attr("transform", d => `translate(${arcLabel.centroid(d)})`)
+      .style('fill', 'white')
     .selectAll("tspan")
     .data(d => {
       const lines = `${title(d.data)}`.split(/\n/);

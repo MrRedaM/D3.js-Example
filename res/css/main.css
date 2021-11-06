@@ -26,10 +26,10 @@ main{
 }
 
 #bar_graph{
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
     grid-row: 1 / 3;
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 4fr 1fr;
     padding-right: 0;
 }
 
@@ -38,30 +38,27 @@ main{
 }
 
 #pie_graph_sexe{
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 1;
     display: grid;
     grid-template-columns: 1fr;
 }
 
-#pie_graph_sexe > *{
-    grid-column: 1;
-    grid-row: 1;
-    margin: auto;
-}
-
-
 #pie_graph_age{
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 2;
     display: grid;
     grid-template-columns: 1fr;
 }
 
-#pie_graph_age > *{
+#pie_graph_age > *, #pie_graph_sexe > *{
     grid-column: 1;
     grid-row: 1;
     margin: auto;
+}
+
+#pie_graph_age > h2, #pie_graph_sexe > h2{
+    color: black;
 }
 
 header .fab{
@@ -69,6 +66,7 @@ header .fab{
     opacity: 0.6;
     cursor: pointer;
 }
+
 
 header .fab:hover{
     transition: 0.7s;

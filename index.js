@@ -1,29 +1,52 @@
 //==============================================================================
 // BAR CHART
 //==============================================================================
+const width = 1000;
+const height = 500;
+
+const questions = [
+    "Fumer",
+    "Activité physique 2+ fois par semaine",
+    "Marche/vélo au moins 10min par jour",
+    "Manger des fruits 3+ fois par semaine",
+    "Maladies chroniques dans la famille",
+  ];
+
 const barData = [
-    {"x":"Fumer", "z":"hommes", "y":5,66},
-    {"x":"Faire de l'activité physique au moins 2 fois par semaine", "z":"hommes", "y":40},
-    {"x":"Manger des fruits", "z":"hommes", "y":80},
+    {"x":questions[0], "z":"", "y":5.66},
+    {"x":questions[1], "z":"", "y":45.28},
+    {"x":questions[2], "z":"", "y":78.30},
+    {"x":questions[3], "z":"", "y":77.36},
+    {"x":questions[4], "z":"", "y":69.81}
 ];
 const barDataSexe = [
-    {"x":"Fumer", "z":"hommes", "y":5.66},
-    {"x":"Fumer", "z":"femmes", "y":0},
-    {"x":"Faire de l'activité physique au moins 2 fois par semaine", "z":"hommes", "y":40},
-    {"x":"Faire de l'activité physique au moins 2 fois par semaine", "z":"femmes", "y":30},
-    {"x":"Manger des fruits au moins 3 fois par semaine", "z":"hommes", "y":70},
-    {"x":"Manger des fruits au moins 3 fois par semaine", "z":"femmes", "y":60}
+    {"x":questions[0], "z":"hommes", "y":5.66},
+    {"x":questions[0], "z":"femmes", "y":0},
+    {"x":questions[1], "z":"hommes", "y":61.02},
+    {"x":questions[1], "z":"femmes", "y":25.53},
+    {"x":questions[2], "z":"hommes", "y":86.44},
+    {"x":questions[2], "z":"femmes", "y":68.09},
+    {"x":questions[3], "z":"hommes", "y":74.58},
+    {"x":questions[3], "z":"femmes", "y":80.85},
+    {"x":questions[4], "z":"hommes", "y":62.71},
+    {"x":questions[4], "z":"femmes", "y":78.72}
 ];
 const barDataAge = [
-    {"x":"Fumer", "z":"<=20ans", "y":5},
-    {"x":"Fumer", "z":">20ans et <=30ans", "y":0},
-    {"x":"Fumer", "z":">30ans", "y":17.39},
-    {"x":"Faire de l'activité physique au moins 2 fois par semaine", "z":"<=20ans", "y":50},
-    {"x":"Faire de l'activité physique au moins 2 fois par semaine", "z":">20ans et <=30ans", "y":5},
-    {"x":"Faire de l'activité physique au moins 2 fois par semaine", "z":">30ans", "y":5},
-    {"x":"Manger des fruits au moins 3 fois par semaine", "z":"<=20ans", "y":50},
-    {"x":"Manger des fruits au moins 3 fois par semaine", "z":">20ans et <=30ans", "y":5},
-    {"x":"Manger des fruits au moins 3 fois par semaine", "z":">30ans", "y":5},
+    {"x":questions[0], "z":"<=20ans", "y":5},
+    {"x":questions[0], "z":">20ans et <=30ans", "y":0},
+    {"x":questions[0], "z":">30ans", "y":17.39},
+    {"x":questions[1], "z":"<=20ans", "y":35},
+    {"x":questions[1], "z":">20ans et <=30ans", "y":46.51},
+    {"x":questions[1], "z":">30ans", "y":60.87},
+    {"x":questions[2], "z":"<=20ans", "y":80},
+    {"x":questions[2], "z":">20ans et <=30ans", "y":76.74},
+    {"x":questions[2], "z":">30ans", "y":78.26},
+    {"x":questions[3], "z":"<=20ans", "y":75},
+    {"x":questions[3], "z":">20ans et <=30ans", "y":81.40},
+    {"x":questions[3], "z":">30ans", "y":73.91},
+    {"x":questions[4], "z":"<=20ans", "y":72.50},
+    {"x":questions[4], "z":">20ans et <=30ans", "y":69.76},
+    {"x":questions[4], "z":">30ans", "y":65.21}
 ];
 
 d3.select("#bar_chart").append(function() { 
@@ -33,8 +56,8 @@ d3.select("#bar_chart").append(function() {
         z: d => d.z,
         yLabel: "↑ Pourcentage (%)",
         colors: ["#f39026"],
-        width: 800,
-        height: 450,
+        width: width,
+        height: height,
       }); 
 }).attr("id", "main_chart");
 
@@ -49,8 +72,8 @@ $("#apply").click(function(){
                 yLabel: "↑ Pourcentage (%)",
                 zDomain: ["hommes", "femmes"],
                 colors: ["#6ca0dc", "#f8b9d4"],
-                width: 800,
-                height: 450,
+                width: width,
+                height: height,
               }); 
         }).attr("id", "main_chart");
     }else if($("#age:checked").val()){
@@ -61,8 +84,9 @@ $("#apply").click(function(){
                 z: d => d.z,
                 yLabel: "↑ Pourcentage (%)",
                 zDomain: ["<=20ans", ">20ans et <=30ans", ">30ans"],
-                width: 800,
-                height: 450,
+                colors: ["#025297", "#91071a", "#919595"],
+                width: width,
+                height: height,
               }); 
         }).attr("id", "main_chart");
     } else{
@@ -73,8 +97,8 @@ $("#apply").click(function(){
                 z: d => d.z,
                 yLabel: "↑ Pourcentage (%)",
                 colors: ["#f39026"],
-                width: 800,
-                height: 450,
+                width: width,
+                height: height,
               }); 
         }).attr("id", "main_chart");
     }
@@ -119,7 +143,7 @@ d3.select("#pie_graph_age").append(function() {
         value: d => d.value,
         width: 200,
         height: 200,
-        colors: d3.schemeTableau10,
+        colors: ["#025297", "#91071a", "#919595"],
         innerRadius: 50
       });
 })
